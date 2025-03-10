@@ -1,0 +1,457 @@
+.row{
+    --bs-gutter-x : 0 !important;
+}
+
+
+.container{
+    /*background-color: #000000;*/
+}
+
+body{
+    min-height: 100vh;
+    background-color:rgba(0, 0, 0, 0)
+}
+#root{
+    background-color: #F4F4F4;
+}
+
+.content{
+    width: 100%;
+    /*min-height: 100vh;*/
+    margin-right: 15px;
+    overflow-y: auto;  /* Scroll uniquement verticalement */
+    height: 100vh;
+    position: relative;
+    
+}
+
+.contenu{
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sidebar {
+	/*min-height: 100vh;*/
+	width: 25%;
+	background-color: #FFFFFF;
+	margin-top: 14px;
+	margin-bottom: 14px;
+	margin-left: 11px;
+	margin-right: 11px;
+	border-radius: 10px;
+
+    padding: 10px;
+    overflow-y: auto;  /* Scroll uniquement verticalement */
+    height: 100vh;
+  
+}
+
+.header{
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header-search{
+    display : flex;
+    align-items: center;
+}
+
+.titleApp{
+    display : flex;
+    align-items: center;
+    font-size: 26px;
+}
+
+
+.font-search {
+	background-color: black;
+	/* padding: 0.24em; */
+	border-radius: 18px;
+	width: 35px;
+	height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-inline: 15px;
+}
+
+.new-chat-btn {
+    padding-inline: 35px;
+    border-radius: 20px;
+}
+.convers-p{
+    color: #BFB8B8;
+    font-size: 14px;
+}
+
+.conversation{
+    color: black;
+    font-size: 14px;
+    font-family: 'Inria Serif', serif;   
+}
+
+p.conversation{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    opacity: 0.7;
+}
+
+.date-from-p{
+    color: #BFB8B8;
+    font-size: 12px;
+}
+
+.date-from-hr-top{
+    margin-top: 10px;
+}
+
+.date-from-hr-bottom{
+    margin-bottom: 10px;
+}
+
+.div-conversation {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-conversation {
+    display: none;
+    align-items: center;
+}
+
+.div-conversation:hover .delete-conversation{
+    display: flex;
+    cursor: pointer;
+}
+
+.div-conversation:hover .conversation{
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+
+/* content */
+.content {
+    margin-block: 10px;
+}
+
+.about {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+
+}
+
+.about-div {
+    background-color: #E97B7B;
+    width: 65px;
+    height: 65px;
+    border-radius: 35px;
+    /*float : right;
+    padding-right: 0;*/
+    display: flex;
+}
+
+.question{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.question-div{
+    padding: 10px;
+    background-color: #E0DEDE;
+    border-radius: 7px;
+    margin-left: 10px;
+}
+
+.question-text{
+    font-family: 'Inria Serif', serif;   
+    font-size: 15px;
+}
+
+.reponse{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 10px;;
+}
+
+.reponse-div{
+    padding: 10px;
+    /*background-color: #F4F4F4;*/
+    background-color: #EAE4E43D;
+    border-radius: 7px;
+    margin-left: 10px;
+}
+
+.reponse-text{
+    /*font-family: 'Inria Serif', serif;*/
+    font-family: sans-serif;   
+    font-size: 15px;
+}
+
+.hr-content{
+    margin: 10px auto;
+    width: 20%;
+}
+
+.div-search {
+	width: 60%;
+	height: 100px;
+	background-color: #FFFFFF;
+	border-radius: 20px;
+	display: flex;
+	position: fixed;
+	bottom: 15px;
+	left: 60%;
+	transform: translateX(-50%);
+	justify-content: center;
+    border: 1px solid #e1d0d0;
+    
+}
+
+.div-search-new-conv{
+    bottom: 50vh !important;
+}
+
+
+#text-search{
+    border: none;
+  outline: none;
+  width: 90%;
+  resize: none;
+  border-radius: 20px;
+  padding: 8px;
+  
+}
+
+.div-send {
+	background-color: #7C9AFB;
+	width: 46px;
+	height: 46px;
+	display: flex;
+	align-items: center;
+	margin: auto 15px;
+	border-radius: 25px;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.font-send{
+    transform: rotate(-1deg);
+    
+}
+
+.email-span{
+    margin: auto;
+    font-size: 25px;
+}
+
+.about{
+    position: relative;
+}
+
+  .email-name {
+    cursor: pointer;
+  }
+  
+  .popup {
+    position: absolute;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    right: 0;
+    top: 100%;
+    z-index: 1000;
+  }
+  
+  .popup button {
+    background: #7c9afb;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .popup button:hover {
+    background: darkred;
+  }
+  
+.bodyLogin{
+    background-color: #E5E5E5;
+    width: 78%;
+    margin: auto;
+}
+
+.containerChatToky{
+    background-color: #FFFFFF;
+    position: relative;
+}
+
+  .titleChatLogin{
+    /*height: 50vh;*/
+    /*background-color: #7c9afb;*/
+    /*display: flex;*/
+    align-items: center;
+    /*padding-top: 35px;*/
+    padding-top: 1.5rem;
+  }
+
+  .css-1xp5r68-MuiFormControl-root-MuiTextField-root{
+    width: 100% !important;
+  }
+
+  .loginBtn{
+    width: 90%;
+  }
+
+
+
+.svg-view{
+    /*width: 100%; 
+    height: 50vh;*/
+    /*margin-top: -25vh;*/
+    /*margin-top: -130px;*/
+    margin-top: -11rem;
+}
+
+.svg-class{
+    position: absolute;
+    top : 0;
+    right: 0;
+    left: 0;
+}
+
+.login-container{
+    position: absolute;
+    top: 0;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%; /* Spécifie une largeur pour un centrage précis */
+}
+
+.loginContent{
+    /*margin-top: 15vh;*/
+    /*margin-top: 60px;*/
+    margin-top: 9rem;
+}
+
+.loginText{
+   margin-bottom: 30px; 
+   font-size: 3rem;
+}
+
+.active{
+    font-weight: bold;
+}
+
+.question-div-edit {
+    display: inline-block; /* Permet de garder la div minimale en fonction du contenu */
+    background-color: #E0DEDE;
+    border: none;
+    padding: 10px;
+    /*min-width: 150px;*/ /* Valeur minimale pour éviter que ce soit trop petit */
+    width: 100%;
+    margin-left: 30px;
+    margin-right: 10px;
+    border-radius: 15px;
+}
+
+.question-div-edit textarea {
+    width: 100%; /* Prend toute la largeur de la div */
+    /*max-width: 50%; */ /* Ne dépasse pas 50% de la largeur du parent */
+    /*min-width: 80px;*/ /* Empêche l'input d'être trop petit */
+    box-sizing: border-box; /* Évite que le padding affecte la largeur */
+    border: 1px solid #ccc;
+    background-color: #E0DEDE;
+    padding: 5px;
+    resize: none;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    
+    
+}
+
+
+/*
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+  
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal {
+    display: block;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    width: 40%;
+    height: 150px;
+    margin-left :30%;
+}
+
+.modal-buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.modal-buttons .confirm {
+    background: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-buttons .cancel {
+    background: gray;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-buttons button:hover {
+    opacity: 0.8;
+}
+*/
+
+.modal-backdrop.show {
+	opacity: 0.7;
+}
+
+.modal-search .modal-dialog {
+    width: 60%;
+    max-width: inherit !important;
+    opacity: 0.93;
+}
+
+.list-search{
+    opacity: 0.7;
+    font-size: 14px;
+    font-family: initial;
+}
+.convers-search-p:hover {
+    background-color: #ebeff2;
+    border-radius: 8px;
+}

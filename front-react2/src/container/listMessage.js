@@ -13,27 +13,17 @@ function ListMessage({dataMessage,setDataMessage}) {
     const token = localStorage.getItem("token");
 
        // Attendre que le state soit mis à jour avant de scroller
-    /*setTimeout(() => {
+    setTimeout(() => {
         bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 100);*/
-    useEffect(() => {
+    }, 100);
+    /*useEffect(() => {
         window.scrollTo({
           top: 200, // Position verticale en pixels
           behavior: "smooth", // Défilement fluide
         });
       }, [dataMessage]);
-
-    /*useEffect(() => {
-        //bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-        //window.scrollTo({ top: 4000, behavior: "smooth" })
-        if (messageContainerRef.current) {
-            // Utilisation de scrollTo pour faire défiler jusqu'en bas
-            messageContainerRef.current.scrollTo({
-              top: 100,
-              behavior: 'smooth', // pour un défilement fluide
-            });
-          }    }, [dataMessage]); 
-*/
+    */
+  
     const sendMessage = async () => {
         //console.log(msgToSend);
 

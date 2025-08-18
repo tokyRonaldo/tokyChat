@@ -13,7 +13,6 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 const getChat = async (req , res) => {
     const listChat = await Chat.find().sort({createdAt: -1});
-    console.log('etooooooooooooooooo')
     console.log(listChat)
     return res.status(200).json(listChat);
 }

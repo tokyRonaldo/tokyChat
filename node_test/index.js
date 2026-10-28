@@ -4,8 +4,6 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const app = express();
 const port = 3001;
 
-const genAI = new GoogleGenerativeAI("AIzaSyBkv3srfbhClEiLbiMcqEPYQjql_yPiIaE");
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 
 // Endpoint principal
@@ -89,8 +87,9 @@ const app = express();
 const jwt = require('jsonwebtoken')
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
-const genAI = new GoogleGenerativeAI("AIzaSyBkv3srfbhClEiLbiMcqEPYQjql_yPiIaE");
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
+
 
 dotenv.config();
 connectDB();

@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const Chat = require('../models/chatModel')
 const User = require('../models/userModel')
@@ -8,33 +9,42 @@ const bcrypt = require('bcryptjs')
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const chatModel = require('../models/chatModel');
 
-const genAI = new GoogleGenerativeAI("AIzaSyBkv3srfbhClEiLbiMcqEPYQjql_yPiIaE");
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-3.8-flash" });
 
 const getChat = async (req , res) => {
     const listChat = await Chat.find().sort({createdAt: -1});
-    console.log(listChat)
     return res.status(200).json(listChat);
 }
 
 const getMessage = async (req , res) => {
     let id = req.params.id;
-    console.log(id)
-    console.log(req.params);
     const listChat = await Chat.find({'_id' : id});
     return res.status(200).json(listChat);
 }
 
 const newChat = async (req , res) => {
+
     const params = req.body
     const prompt = params.message;
-    console.log(req.user._id);
     const test = async () => {
         const result = await model.generateContent(prompt);
         return result.response.candidates[0].content.parts[0].text;
     }
         
-    const responseText = await test();
+    //const responseText = await test();
+
+    let responseText;
+
+    try {
+        responseText = await test();
+    } catch (error) {
+        console.error('Erreur Gemini :', error.message);
+
+        return res.status(503).json({
+            msg: 'Le service Gemini est temporairement indisponible. Réessaie dans quelques instants.'
+        });
+    }
     //res.json(responseText);
     const msg= {
         "title": prompt,
@@ -65,8 +75,6 @@ const newChat = async (req , res) => {
    // Exemple de traitement des messages d'un nouveau chat
     async function processAndSaveChat(chatParams) {
         try {
-            console.log('lkdjfkdjfjkjhkljkj2');
-            console.log(req.user._id);
         
             const newChat = new Chat(chatParams);
 
@@ -112,7 +120,6 @@ const newChat = async (req , res) => {
 const newMessage = async(req,res) => {
     const params = req.body
     const chatId = req.params.id
-    console.log(params);
     const prompt = params.message;
     const test = async () => {
         console.log('ato ah ee')
@@ -150,19 +157,15 @@ const newMessage = async(req,res) => {
 
         // Ajouter les nouveaux messages au tableau `messages`
         const newMessages = msg.messages || []; // Assurez-vous que les messages sont passés dans le body
-        console.log(newMessages);
         let lastQuestionId = null;
 
 
         newMessages.forEach((message) => {
             if (message.type === 'question') {
                 // Enregistrer l'ID de la question
-                console.log(message)
                 const question = { ...message };
-                console.log(question)
                 chat.messages.push(question);
                 lastQuestionId = chat.messages[chat.messages.length - 1]._id; // Récupérer l'ID généré
-                console.log('Nouvel ID de la question :', lastQuestionId);
             // ID généré automatiquement
             } else if (message.type === 'reponse') {
                 // Associer à la dernière question
@@ -193,7 +196,6 @@ const editMessage = async(req,res) => {
     const params = req.body
     const chatId = req.params.id
     const msgId = req.params.msg_id
-    console.log(params);
     const prompt = params.message;
     const test = async () => {
         console.log('ato ah ee')
@@ -339,7 +341,6 @@ const register= async(req,res)=> {
         console.log('test');
     const params = req.body;
     const {email , password} = params;
-console.log(params);
     try{
 
         //let password = await bcryp.hash(params.email,12)
@@ -376,15 +377,12 @@ console.log(params);
 
 const searchOnChat= async (req,res) =>{
     const msg = req.params.value;
-    console.log(msg);
-    console.log("messagedfffffffffffffffffff");
     const result = await chatModel.find({
         $or:[
             {title:{$regex : msg,$options : 'i'}},
             {"messages.message":{$regex : msg,$options : 'i'}}
         ]
     })
-    console.log(result);
     return res.status(201).json(result)
 }
 

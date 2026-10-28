@@ -78,8 +78,8 @@ app.listen(port, () => {
 */
 
 
-const express = require('express');
 const dotenv = require('dotenv');
+const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db')
@@ -95,7 +95,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 dotenv.config();
 connectDB();
 
-
+console.log('atooeeeee')
 app.use(cors({
   origin: process.env.FRONT_URL, // URL de ton application React
   methods: ['GET', 'POST', 'PUT', 'DELETE'],

@@ -1,3 +1,6 @@
 front-react2/node_modules/
 front-react2/node_modules/.cache/
+front-react2/.env
 node_test/node_modules/
+.env
+node_test/.env

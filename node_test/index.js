@@ -38,10 +38,7 @@ const app = express();
 const port = 3001;
 const prompt = "merci";
 
-// Initialiser l'API Google Generative AI avec la clé API
-const genAI = new GoogleGenerativeAI({
-  apiKey: "AIzaSyBkv3srfbhClEiLbiMcqEPYQjql_yPiIaE",
-});
+
 
 // Définir le modèle
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });

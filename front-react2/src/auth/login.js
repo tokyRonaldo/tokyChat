@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { TextField } from '@mui/material';
-import logo from '../assets/Sans titre.png'
 
 function Login() {
     const [email, setEmail] = useState("");

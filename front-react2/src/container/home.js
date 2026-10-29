@@ -1,25 +1,18 @@
 import React, { useState,useEffect } from 'react';
-import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom';
 import Sidebar from './sidebar';
+import { useNavigate } from 'react-router-dom';
 import '../assets/myCss.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Dropdown } from 'react-bootstrap';
 import NewDiscussion from './newDiscussion';
 import ListMessage from './listMessage';
 
 function Home(){
     const [isOpen, setIsOpen] = useState(false);
     const [dataMessage, setDataMessage] = useState([]);
-    const [dataDiscussion, setDataDiscussion] = useState([]);
     const [listDiscussion,setListDiscussion] = useState([])
     const [newChat, setNewChat] = useState(true);
     const [activeConversation, setActiveConversation] = useState();
     const navigate=useNavigate();
 
-    const apiUrl = process.env.REACT_APP_API_URL;
-
-    const token = localStorage.getItem("token");
 
     const togglePopup = () => {
       setIsOpen(!isOpen);

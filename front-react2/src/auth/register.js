@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { TextField } from '@mui/material';
-import logo from '../assets/Sans titre.png'
 import { Link, useNavigate } from 'react-router-dom';
 
 function Register() {
@@ -31,7 +30,7 @@ function Register() {
         } catch (error) {
             console.log()
             if (error.response) { 
-                if(error.response.status == 401){
+                if(error.response.status === 401){
                     setError('compte existe déjà')
                     return '';
                 }
